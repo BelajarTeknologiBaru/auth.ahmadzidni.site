@@ -2,6 +2,7 @@ import DeleteUser from "@/app/components/DeleteUser";
 import NavbarComponent from "@/app/components/NavbarComponents";
 import WithAuth from "@/app/middleware/withAuth";
 import { getSession } from "@/app/session/getSession";
+import NavbarDashboard from "./components/NavbarDashboard";
 
 export const metadata = {
   title: "Dashboard",
@@ -14,12 +15,13 @@ const Dashboard = async () => {
   return (
     <div>
       <WithAuth session={session}>
-        <NavbarComponent session={session} />
+        <NavbarDashboard session={session} />
+        {/* <NavbarComponent session={session} /> */}
         <div>
           <h1>
             Selamat datang <b className="font-bold">{session?.user.name}</b>
           </h1>
-          <DeleteUser email={session?.user.email} />
+          {/* <DeleteUser email={session?.user.email} /> */}
         </div>
       </WithAuth>
     </div>

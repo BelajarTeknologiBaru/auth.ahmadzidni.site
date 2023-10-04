@@ -24,12 +24,11 @@
     "react": "latest",
     "react-dom": "latest",
     "react-hot-toast": "^2.4.1",
-    "react-icons": "^4.11.0",
-    "react-input-mask": "^2.0.4",
-    "sweetalert2": "^11.7.31"
+    "react-icons": "^4.11.0"
   },
   "devDependencies": {
     "autoprefixer": "latest",
+    "daisyui": "^3.8.3",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "postcss": "latest",
