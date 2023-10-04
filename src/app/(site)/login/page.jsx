@@ -8,7 +8,10 @@ import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { VscGithubInverted } from "react-icons/vsc";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import ButtonLoginSocialMedia from "./components/ButtonLoginSocialMedia";
+import FormLogin from "./components/FormLogin";
+import SpinnerLoading from "@/app/components/SpinnerLoading";
 
 export default function Login() {
   // ubah title
@@ -83,15 +86,7 @@ export default function Login() {
                   Email address
                 </label>
                 <div className="mt-2">
-                  <input
-                    id="email"
-                    onChange={(e) => setData({ ...data, email: e.target.value })}
-                    value={data?.email}
-                    name="email"
-                    type="email"
-                    required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
+                  <FormLogin id="email" onChange={(e) => setData({ ...data, email: e.target.value })} value={data?.email} name="email" type="email" />
                 </div>
               </div>
 
@@ -107,18 +102,19 @@ export default function Login() {
                   </div>
                 </div>
                 <div className="mt-2">
-                  <input
-                    id="password"
-                    onChange={(e) => setData({ ...data, password: e.target.value })}
-                    name="password"
-                    type={showPassword ? "text" : "password"}
-                    required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
+                  <FormLogin id="password" onChange={(e) => setData({ ...data, password: e.target.value })} name="password" type={showPassword ? "text" : "password"} />
                   <div className="text-sm mt-1" onClick={toggleShowPassword}>
-                    <p href="#" className="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-500">
-                      Show password
-                    </p>
+                    <div className="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-500">
+                      {showPassword ? (
+                        <div className="text-xl">
+                          <AiOutlineEyeInvisible />
+                        </div>
+                      ) : (
+                        <div className="text-xl">
+                          <AiOutlineEye />
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -126,9 +122,10 @@ export default function Login() {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:cursor-not-allowed"
+                  disabled={isLoading ? true : false}
                 >
-                  {isLoading ? "loading..." : "Sign in"}
+                  {isLoading ? <SpinnerLoading /> : "Sign in"}
                 </button>
               </div>
             </form>

@@ -1,3 +1,4 @@
+import DeleteUser from "@/app/components/DeleteUser";
 import NavbarComponent from "@/app/components/NavbarComponents";
 import WithAuth from "@/app/middleware/withAuth";
 import { getSession } from "@/app/session/getSession";
@@ -18,7 +19,7 @@ const Dashboard = async () => {
           <h1>
             Selamat datang <b className="font-bold">{session?.user.name}</b>
           </h1>
-          {/* <LogoutButton /> */}
+          <DeleteUser email={session?.user.email} />
         </div>
       </WithAuth>
     </div>
