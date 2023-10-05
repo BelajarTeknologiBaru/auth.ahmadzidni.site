@@ -9,9 +9,7 @@ const KananSidebar = ({ session }) => {
           <p>Ganti Avatar disini.</p>
           <div className="card-actions justify-start">
             <div className="avatar">
-              <div className="w-24 rounded-full">
-                <Image width={48} height={48} src={session?.user.image} />
-              </div>
+              <div className="w-24 rounded-full">{session && <Image width={48} height={48} src={session?.user.image} />}</div>
             </div>
           </div>
           <div className="card-actions justify-start">
