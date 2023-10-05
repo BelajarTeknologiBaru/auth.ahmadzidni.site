@@ -37,7 +37,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const login = await signIn("credentials", { ...data, redirect: false, callbackUrl: "/dashboard" });
+    const login = await signIn("credentials", { ...data, redirect: false, callbackUrl: "/chat" });
     setIsLoading(false);
     // console.log(login);
     if (!login.error) {
@@ -65,7 +65,7 @@ export default function Login() {
 
   useEffect(() => {
     if (session?.status === "authenticated") {
-      router.push("/dashboard");
+      router.back();
     }
   }, [session.status]);
 
