@@ -36,12 +36,17 @@ export const POST = async (req) => {
     // membuat angka random untuk verification code
     const verificationCode = cryptoRandomString({ length: 6, type: "numeric" });
 
+    // membuat link image profil
+
+    const image = `https://ui-avatars.com/api/?name=${name}`;
+
     // memasukkan user kedalam database
     await prisma.user.create({
       data: {
         name,
         email,
         hashedPassword,
+        image,
         verificationCode,
       },
     });

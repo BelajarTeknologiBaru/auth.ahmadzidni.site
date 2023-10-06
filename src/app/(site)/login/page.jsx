@@ -65,7 +65,7 @@ export default function Login() {
 
   useEffect(() => {
     if (session?.status === "authenticated") {
-      router.back();
+      router.push("/chat");
     }
   }, [session.status]);
 

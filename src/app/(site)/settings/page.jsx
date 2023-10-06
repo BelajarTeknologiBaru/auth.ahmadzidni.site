@@ -11,15 +11,19 @@ export const metadata = {
 
 const GeneralSettings = async () => {
   const session = await getSession();
+
   return (
     <WithAuth session={session}>
       <NavbarChat session={session} />
-      <div>
-        <h1 className="font-bold text-2xl ms-2 my-10">
-          <FiSettings /> Pengaturan Akun
-        </h1>
-        <hr className="my-2" />
+      <div className="flex h-40 items-center ms-5">
+        <div className="inline-flex  font-bold text-4xl ">
+          <FiSettings />
+        </div>
+        <div>
+          <span className="inline-flex font-bold text-2xl ml-5">Pengaturan Akun</span>
+        </div>
       </div>
+      <hr className="mb-5" />
       <div className="flex">
         <SideBar linkIsActive="General" />
         <KananSidebar session={session} />

@@ -8,17 +8,17 @@ const NavbarChat = ({ session }) => {
   const data = [
     {
       text: "Homepage",
-      link: "#",
+      link: "/",
+      isActive: true,
+    },
+    {
+      text: "Chat",
+      link: "/chat",
       isActive: true,
     },
     {
       text: "Portfolio",
-      link: "#",
-      isActive: true,
-    },
-    {
-      text: "About",
-      link: "#",
+      link: "/portofolio",
       isActive: true,
     },
   ];
@@ -35,7 +35,7 @@ const NavbarChat = ({ session }) => {
             {data.map((d, index) => {
               return (
                 <li key={index}>
-                  <a href={d.link}>{d.text}</a>
+                  <Link href={d.link}>{d.text}</Link>
                 </li>
               );
             })}
@@ -70,7 +70,7 @@ const NavbarChat = ({ session }) => {
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <Image width={40} height={40} alt="profile" src={!session?.user?.image ? `https://ui-avatars.com/api/?name=${session?.user.name}` : `${session?.user?.image}`} />
+                  <Image width={40} height={40} alt="profile" src={session?.user?.image} />
                 </div>
               </label>
               <ul tabIndex={0} className="menu menu-sm dropdown-content  z-[50] mt-3  p-2 shadow bg-base-100 rounded-box w-52">
