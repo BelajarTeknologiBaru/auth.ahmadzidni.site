@@ -1,7 +1,7 @@
 const AdvancedSettingsComponnets = () => {
   return (
-    <div className=" flex-1 ">
-      <div className="card  w-full bg-rose-300 shadow-xl mb-2">
+    <div className=" flex-1 px-3">
+      <div className="card  w-full bg-rose-300 shadow-xl mb-2 ">
         <div className="card-body">
           <h2 className="card-title">Hapus Account</h2>
           <p>Hapus Akun Anda dari database disini.</p>

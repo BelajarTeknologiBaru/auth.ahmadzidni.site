@@ -1,12 +1,31 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Chat from "./Chat";
+
+import { io } from "socket.io-client";
+
+const socket = io.connect("http://localhost:3001");
 
 const JoinChat = ({ session }) => {
   const [isClicked, setIsClicked] = useState(false);
+
   const router = useRouter();
+  const data = {
+    name: session?.user.name,
+    image: session?.user.image,
+  };
+  const handleJoin = () => {
+    if (!session) {
+      router.push("/login?callbackUrl=/chat");
+    }
+    if (session) {
+      setIsClicked(true);
+      socket.emit("join_room", data);
+    }
+  };
+
   return (
     <>
       {!isClicked && (
@@ -19,16 +38,7 @@ const JoinChat = ({ session }) => {
               <h2 className="card-title">Join to Live Chat.</h2>
               <p>kamu harus login terlebih dahulu untuk bergabung ke dalam live chat ini.</p>
               <div className="card-actions">
-                <button
-                  onClick={() => {
-                    console.log("dikilik");
-                    if (!session) {
-                      router.push("/login");
-                    }
-                    setIsClicked(true);
-                  }}
-                  className="btn btn-primary mt-2"
-                >
+                <button onClick={handleJoin} className="btn btn-primary mt-2">
                   Gabung Sekarang
                 </button>
               </div>

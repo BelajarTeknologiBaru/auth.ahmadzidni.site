@@ -23,7 +23,7 @@ const NavbarChat = ({ session }) => {
     },
   ];
   return (
-    <div className="navbar bg-base-100 shadow z-50">
+    <div className="navbar bg-base-100 shadow z-50 fixed">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -73,11 +73,11 @@ const NavbarChat = ({ session }) => {
                   <Image width={40} height={40} alt="profile" src={session?.user?.image} />
                 </div>
               </label>
-              <ul tabIndex={0} className="menu menu-sm dropdown-content  z-[50] mt-3  p-2 shadow bg-base-100 rounded-box w-52">
-                <li className="my-2 ">
-                  <h3 className="cursor-default">{session?.user.name}</h3>
-                  <h3 className="font-bold cursor-text">{session?.user.email}</h3>
-                </li>
+              <ul tabIndex={0} className="menu menu-sm dropdown-content z-[50] mt-3  p-2 shadow bg-base-100 rounded-box w-52">
+                <div className="my-2 ms-2 ">
+                  <h3 className="">{session?.user.name}</h3>
+                  <h3 className="font-bold ">{session?.user.email}</h3>
+                </div>
                 <li>
                   <hr />
                 </li>

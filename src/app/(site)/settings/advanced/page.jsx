@@ -1,10 +1,9 @@
 import { FiSettings } from "react-icons/fi";
-import KananSidebar from "../components/KananSidebar";
 import { getSession } from "@/app/session/getSession";
-import WithAuth from "@/app/middleware/withAuth";
 import Sidebar from "../components/SideBar";
 import NavbarChat from "../../chat/components/NavbarChat";
 import AdvancedSettingsComponnets from "./components/AdvancedSettingsComponnets";
+import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "Pengaturan",
@@ -12,8 +11,11 @@ export const metadata = {
 
 const AdvancedSettings = async () => {
   const session = await getSession();
+  if (!session) {
+    redirect("/login?callbackUrl=/settings/advanced");
+  }
   return (
-    <WithAuth session={session}>
+    <div>
       <NavbarChat session={session} />
       <div className="flex h-40 items-center ms-5">
         <div className="inline-flex  font-bold text-4xl ">
@@ -28,7 +30,7 @@ const AdvancedSettings = async () => {
         <Sidebar linkIsActive="Advanced" />
         <AdvancedSettingsComponnets />
       </div>
-    </WithAuth>
+    </div>
   );
 };
 

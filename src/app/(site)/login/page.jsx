@@ -19,6 +19,8 @@ export default function Login() {
 
   const emailParams = useSearchParams();
   const email = emailParams.get("email");
+  const callbackUrl = emailParams.get("callbackUrl");
+  console.log(callbackUrl);
   const [data, setData] = useState({
     email: email || "",
     password: "",
@@ -65,7 +67,7 @@ export default function Login() {
 
   useEffect(() => {
     if (session?.status === "authenticated") {
-      router.push("/chat");
+      router.push(callbackUrl);
     }
   }, [session.status]);
 
