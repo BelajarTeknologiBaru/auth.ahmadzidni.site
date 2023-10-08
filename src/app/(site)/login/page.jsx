@@ -19,7 +19,7 @@ export default function Login() {
 
   const emailParams = useSearchParams();
   const email = emailParams.get("email");
-  const callbackUrl = emailParams.get("callbackUrl");
+  const callbackUrl = emailParams.get("callbackUrl") || "/chat";
   console.log(callbackUrl);
   const [data, setData] = useState({
     email: email || "",
@@ -132,7 +132,7 @@ export default function Login() {
               </div>
             </form>
             <p className="mt-5 text-center text-sm text-gray-500">
-              Tidak punya akun?{" "}
+              Tidak punya akun?
               <Link href="/register" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                 Daftar Sekarang.
               </Link>
